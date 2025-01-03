@@ -20,9 +20,9 @@ android {
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
 
         //resValue
-      //  resValue("string", "SUPABASE_URL", "http://martclinic.cafe24.com:8000")
-      //  resValue("string", "ANON_KEY", "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.ewogICJyb2xlIjogImFub24iLAogICJpc3MiOiAic3VwYWJhc2UiLAogICJpYXQiOiAxNzMwOTkxNjAwLAogICJleHAiOiAxODg4NzU4MDAwCn0.lA6CORXNZ8FLfK3_Y0dVo7XgavbtrdOfNZh1ursbjQQ")
-      //  resValue("string","SERVICE_ROLE_KEY", "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.ewogICJyb2xlIjogInNlcnZpY2Vfcm9sZSIsCiAgImlzcyI6ICJzdXBhYmFzZSIsCiAgImlhdCI6IDE3MzA5OTE2MDAsCiAgImV4cCI6IDE4ODg3NTgwMDAKfQ.Vq7dL2f0kjOL3jTOSbh4OQFySMcjZGK6v3U6Dr8jhSo")
+        resValue("string", "SUPABASE_URL", "http://martclinic.cafe24.com:8000")
+        resValue("string", "ANON_KEY", "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.ewogICJyb2xlIjogImFub24iLAogICJpc3MiOiAic3VwYWJhc2UiLAogICJpYXQiOiAxNzMwOTkxNjAwLAogICJleHAiOiAxODg4NzU4MDAwCn0.lA6CORXNZ8FLfK3_Y0dVo7XgavbtrdOfNZh1ursbjQQ")
+        resValue("string","SERVICE_ROLE_KEY", "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.ewogICJyb2xlIjogInNlcnZpY2Vfcm9sZSIsCiAgImlzcyI6ICJzdXBhYmFzZSIsCiAgImlhdCI6IDE3MzA5OTE2MDAsCiAgImV4cCI6IDE4ODg3NTgwMDAKfQ.Vq7dL2f0kjOL3jTOSbh4OQFySMcjZGK6v3U6Dr8jhSo")
 
     }
 
@@ -63,6 +63,7 @@ dependencies {
     implementation(libs.androidx.ui.graphics)
     implementation(libs.androidx.ui.tooling.preview)
     implementation(libs.androidx.material3)
+    implementation(libs.androidx.navigation.runtime.ktx)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
@@ -81,8 +82,8 @@ dependencies {
     implementation("io.ktor:ktor-utils:3.0.2")
 
     //hilt dagger dependency
-    implementation("com.google.dagger:hilt-android:2.44")
-    kapt("com.google.dagger:hilt-android-compiler:2.44")
+    implementation("com.google.dagger:hilt-android:2.52")
+    kapt("com.google.dagger:hilt-android-compiler:2.52")
 
     // Other necessary dependencies (e.g., ViewModel support)
     implementation("androidx.hilt:hilt-lifecycle-viewmodel:1.0.0-alpha03")

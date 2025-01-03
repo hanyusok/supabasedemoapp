@@ -1,5 +1,6 @@
 package com.example.supabasedemo.di
 
+import androidx.compose.runtime.Composable
 import androidx.compose.ui.res.stringResource
 import com.example.supabasedemo.R
 import dagger.Module
@@ -8,15 +9,23 @@ import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
 import io.github.jan.supabase.BuildConfig
 import io.github.jan.supabase.SupabaseClient
+import io.github.jan.supabase.auth.Auth
+import io.github.jan.supabase.auth.auth
 import io.github.jan.supabase.createSupabaseClient
+import io.github.jan.supabase.postgrest.Postgrest
+import io.github.jan.supabase.postgrest.postgrest
+import io.github.jan.supabase.storage.Storage
+import io.github.jan.supabase.storage.storage
 import javax.inject.Singleton
 
 
 @InstallIn(SingletonComponent::class)
 @Module
+
 object SupabaseModule {
     @Provides
     @Singleton
+    @Composable
     fun provideSupabaseClient(): SupabaseClient {
         return createSupabaseClient(
             supabaseUrl = stringResource(R.string.SUPABASE_URL),
@@ -24,12 +33,14 @@ object SupabaseModule {
 
         ) {
             install(Postgrest)
-            install(GoTrue) {
-                flowType = FlowType.PKCE
-                scheme = "app"
-                host = "supabase.com"
-            }
+            install(Auth)
+//             {
+//                flowType = FlowType.PKCE
+//                scheme = "app"
+//                host = "supabase.com"
+//            }
             install(Storage)
+
         }
     }
 
@@ -41,8 +52,8 @@ object SupabaseModule {
 
     @Provides
     @Singleton
-    fun provideSupabaseGoTrue(client: SupabaseClient): GoTrue {
-        return client.gotrue
+    fun provideSupabaseGoTrue(client: SupabaseClient): Auth {
+        return client.auth
     }
 
     @Provides
